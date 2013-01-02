@@ -54,7 +54,7 @@ exports.doRequest = function(o, callback){
 	};
 
 	if(params){
-		requestoptions['headers']['Content-Type'] = 'aplication/x-www-form-urlencoded';
+		requestoptions['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 		requestoptions['headers']['Content-Length'] = params.length;
 	}
 
