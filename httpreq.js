@@ -35,9 +35,15 @@ exports.doRequest = function(o, callback){
 	var reqUrl = url.parse(o.url);
 	var path = reqUrl.path;
 
-	var port = 80;
-	if(reqUrl.protocol == 'https:')
+	var port;
+
+	if(reqUrl.port){
+		port = reqUrl.port;
+	}else if(reqUrl.protocol == 'https:'){
 		port = 443;
+	}else{
+		port = 80;
+	}
 
 	if(o.method == 'POST' && o.options){
 		params = querystring.stringify(o.options);
@@ -90,6 +96,10 @@ exports.doRequest = function(o, callback){
 		request = https.request(requestoptions, requestResponse);
 	else
 		request = http.request(requestoptions, requestResponse);
+
+	request.on('error', function (err) {
+		callback(err);
+	});
 
 	if(params)
 		request.write(params);
@@ -185,6 +195,10 @@ exports.uploadFile = function(o, callback){
 		request = https.request(requestoptions, requestResponse);
 	else
 		request = http.request(requestoptions, requestResponse);
+
+	request.on('error', function (err) {
+		callback(err);
+	});
 
 	request.write(multipartBody);
 
