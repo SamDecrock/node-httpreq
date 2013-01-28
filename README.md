@@ -22,7 +22,7 @@ __Arguments__
     - parameters: an object of query parameters
     - headers: an object of headers
     - cookies: an array of cookies
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers (__res.headers__) and the body (__res.body__)
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without options__
 
@@ -71,10 +71,10 @@ httpreq.get('http://posttestserver.com/post.php', {
 __Arguments__
  - url: The url to connect to. Can be http or https.
  - options: (optional) The following options can be passed:
-    - parameters: an object of post parameters (__application/x-www-form-urlencoded__ is used)
+    - parameters: an object of post parameters ( *application/x-www-form-urlencoded* is used)
     - headers: an object of headers
     - cookies: an array of cookies
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers (__res.headers__) and the body (__res.body__)
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without extra options__
 
@@ -127,11 +127,11 @@ httpreq.post('http://posttestserver.com/post.php', {
 __Arguments__
  - options: The following options can be passed:
     - url: the url to post the files to
-    - parameters: an object of post parameters (__multipart/form-data__ is used)
+    - parameters: an object of post parameters ( *multipart/form-data* is used)
     - files: an object of files (can be more than one)
     - headers: an object of headers
     - cookies: an array of cookies
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers (__res.headers__) and the body (__res.body__)
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 ```js
 var httpreq = require('httpreq');
@@ -166,7 +166,7 @@ __Arguments__
     - files: an object of files (can be more than one)
     - headers: an object of headers
     - cookies: an array of cookies
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers (__res.headers__) and the body (__res.body__)
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example__
 
