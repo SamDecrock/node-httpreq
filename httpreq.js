@@ -27,6 +27,27 @@ var https = require('https');
 var http = require('http');
 var url = require('url');
 
+exports.get = function(url, options, callback){
+	// if only 2 params are provided
+	if(callback === undefined && options && typeof(options)==="function")
+		callback = options;
+
+	var moreOptions = options;
+	moreOptions.url = url;
+	moreOptions.method = 'GET';
+	doRequest(moreOptions, callback);
+}
+
+exports.post = function(url, options, callback){
+	// if only 2 params are provided
+	if(callback === undefined && options && typeof(options)==="function")
+		callback = options;
+
+	var moreOptions = options;
+	moreOptions.url = url;
+	moreOptions.method = 'POST';
+	doRequest(moreOptions, callback);
+}
 
 exports.doRequest = function(o, callback){
 	var responsebody = "";
