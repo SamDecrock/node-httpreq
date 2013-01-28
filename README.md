@@ -5,6 +5,12 @@ node-httpreq is a node.js library to do HTTP(S) requests the easy way
 
 Do GET, POST, upload files, use cookies, change headers, ...
 
+## Install
+
+You can install __httpreq__ using the Node Package Manager (npm):
+
+    npm install httpreq
+
 ## How to use
 
 * [httpreq.get(url, [options], callback)](#get)
