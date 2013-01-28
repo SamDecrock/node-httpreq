@@ -1,0 +1,23 @@
+{
+  "name": "httpreq",
+  "description": "node-httpreq is a node.js library to do HTTP(S) requests the easy way",
+  "version": "0.1.0",
+  "author": {
+    "name": "Sam Decrock",
+    "url": "https://github.com/SamDecrock/"
+  },
+  "bugs": {
+    "url": "https://github.com/SamDecrock/node-httpreq/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SamDecrock/node-httpreq.git"
+  },
+  "main": "./httpreq",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ]
+}
