@@ -1,10 +1,19 @@
 node-httpreq
 ============
 
-node-httpreq is a node.js library to do http(s) requests (GET, POST, upload files, use cookies, ...) the easy way.
+node-httpreq is a node.js library to do HTTP(S) requests the easy way
+
+Do GET, POST, upload files, use cookies, change headers, ...
 
 ## How to use
 
+* [httpreq.get(url, [options], callback)](#get)
+* [httpreq.post(url, [options], callback)](#post)
+* [httpreq.uploadFile(options, callback)](#upload)
+* [httpreq.doRequest(options, callback)](#dorequest)
+
+---------------------------------------
+<a name="get" />
 ### httpreq.get(url, [options], callback)
 
 __Arguments__
@@ -55,13 +64,14 @@ httpreq.get('http://posttestserver.com/post.php', {
 	}
 });
 ```
-
+---------------------------------------
+<a name="post" />
 ### httpreq.post(url, [options], callback)
 
 __Arguments__
  - url: The url to connect to. Can be http or https.
  - options: (optional) The following options can be passed:
-    - parameters: an object of post parameters (*application/x-www-form-urlencoded* is used)
+    - parameters: an object of post parameters (__application/x-www-form-urlencoded__ is used)
     - headers: an object of headers
     - cookies: an array of cookies
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers (__res.headers__) and the body (__res.body__)
@@ -110,13 +120,14 @@ httpreq.post('http://posttestserver.com/post.php', {
 	}
 });
 ```
-
+---------------------------------------
+<a name="upload" />
 ### httpreq.uploadFile(options, callback)
 
 __Arguments__
  - options: The following options can be passed:
     - url: the url to post the files to
-    - parameters: an object of post parameters (*multipart/form-data* is used)
+    - parameters: an object of post parameters (__multipart/form-data__ is used)
     - files: an object of files (can be more than one)
     - headers: an object of headers
     - cookies: an array of cookies
@@ -141,7 +152,8 @@ function (err, res){
 	}
 });
 ```
-
+---------------------------------------
+<a name="dorequest" />
 ### httpreq.doRequest(options, callback)
 
 This is used by httpreq.get() and httpreq.post()
