@@ -28,25 +28,25 @@ var http = require('http');
 var url = require('url');
 
 exports.get = function(url, options, callback){
-	// if only 2 params are provided
+	// if only 2 args are provided
 	if(callback === undefined && options && typeof(options)==="function")
 		callback = options;
 
 	var moreOptions = options;
 	moreOptions.url = url;
 	moreOptions.method = 'GET';
-	doRequest(moreOptions, callback);
+	this.doRequest(moreOptions, callback);
 }
 
 exports.post = function(url, options, callback){
-	// if only 2 params are provided
+	// if only 2 args are provided
 	if(callback === undefined && options && typeof(options)==="function")
 		callback = options;
 
 	var moreOptions = options;
 	moreOptions.url = url;
 	moreOptions.method = 'POST';
-	doRequest(moreOptions, callback);
+	this.doRequest(moreOptions, callback);
 }
 
 exports.doRequest = function(o, callback){
@@ -66,10 +66,10 @@ exports.doRequest = function(o, callback){
 		port = 80;
 	}
 
-	if(o.method == 'POST' && o.options){
-		params = querystring.stringify(o.options);
-	}else if(o.method == 'GET' && o.options){
-		path += "?" + querystring.stringify(o.options);
+	if(o.method == 'POST' && o.parameters){
+		params = querystring.stringify(o.parameters);
+	}else if(o.method == 'GET' && o.parameters){
+		path += "?" + querystring.stringify(o.parameters);
 	}
 
 	var requestoptions = {
@@ -130,7 +130,7 @@ exports.doRequest = function(o, callback){
 
 
 
-exports.uploadFile = function(o, callback){
+exports.uploadFiles = function(o, callback){
 	var responsebody = "";
 
 	var reqUrl = url.parse(o.url);
@@ -146,13 +146,13 @@ exports.uploadFile = function(o, callback){
 
 	var bufferArray = new Array();
 
-	for(var key in o.options){
-		var optionsData = separator + crlf
+	for(var key in o.parameters){
+		var parametersData = separator + crlf
 			+ 'Content-Disposition: form-data; name="'+encodeURIComponent(key)+'"' + crlf
 			+ crlf
-			+ encodeURIComponent(o.options[key]) + crlf;
+			+ encodeURIComponent(o.parameters[key]) + crlf;
 
-		bufferArray.push(new Buffer(optionsData));
+		bufferArray.push(new Buffer(parametersData));
 	}
 
 	for(var file in o.files){
