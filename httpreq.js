@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011 Sam Decrock <sam.decrock@gmail.com>
+Copyright (c) 2013 Sam Decrock <sam.decrock@gmail.com>
 
 MIT License
 
