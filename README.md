@@ -17,6 +17,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 * [httpreq.post(url, [options], callback)](#post)
 * [httpreq.uploadFile(options, callback)](#upload)
 * [httpreq.doRequest(options, callback)](#dorequest)
+* [Downloading a binary file](#binary)
 
 ---------------------------------------
 <a name="get" />
@@ -147,7 +148,7 @@ var httpreq = require('httpreq');
 
 httpreq.uploadFile({
 	url: "http://rekognition.com/demo/do_upload/",
-	options:{
+	parameters:{
 		name_space	: 'something',
 	},
 	files:{
@@ -196,6 +197,26 @@ function (err, res){
 	}else{
 		console.log(JSON.parse(res.body));
 	}
+});
+```
+
+---------------------------------------
+<a name="binary" />
+### Downloading a binary file
+To download a binary file, just add __binary: true__ to the options when doing a get or a post.
+
+__Example__
+
+```js
+httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true}, function (err, res){
+    if (err){
+        console.log(err);
+    }else{
+        fs.writeFile(__dirname + '/test.png', res.body, function (err) {
+            if(err)
+                console.log("error writing file");
+        });
+    }
 });
 ```
 
