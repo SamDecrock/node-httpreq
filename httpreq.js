@@ -50,7 +50,7 @@ exports.post = function(url, options, callback){
 }
 
 exports.doRequest = function(o, callback){
-	var responsebody = "";
+	var chunks = [];
 	var params;
 
 	var reqUrl = url.parse(o.url);
@@ -96,13 +96,15 @@ exports.doRequest = function(o, callback){
 	}
 
 	function requestResponse(res){
-		res.setEncoding('utf8');
-
 		res.on('data', function (chunk) {
-			responsebody += chunk;
+			chunks.push(chunk);
 		});
 
 		res.on('end', function (err) {
+			var responsebody = Buffer.concat(chunks);
+			if(!o.binary)
+				responsebody = responsebody.toString('utf8');
+
 			callback(null, {headers: res.headers, body: responsebody});
 		});
 
@@ -131,7 +133,7 @@ exports.doRequest = function(o, callback){
 
 
 exports.uploadFiles = function(o, callback){
-	var responsebody = "";
+	var chunks = [];
 
 	var reqUrl = url.parse(o.url);
 
@@ -195,13 +197,15 @@ exports.uploadFiles = function(o, callback){
 	}
 
 	function requestResponse(res){
-		res.setEncoding('utf8');
-
 		res.on('data', function (chunk) {
-			responsebody += chunk;
+			chunks.push(chunk);
 		});
 
 		res.on('end', function (err) {
+			var responsebody = Buffer.concat(chunks);
+			if(!o.binary)
+				responsebody = responsebody.toString('utf8');
+
 			callback(null, {headers: res.headers, body: responsebody});
 		});
 

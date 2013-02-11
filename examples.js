@@ -1,4 +1,5 @@
 var httpreq = require('./httpreq');
+fs = require('fs')
 
 // get www.google.com
 httpreq.get('http://www.google.com', function (err, res){
@@ -86,4 +87,17 @@ function (err, res){
 		console.log(JSON.parse(res.body));
 	}
 });
+
+// download a binary file:
+httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true}, function (err, res){
+	if (err){
+		console.log(err);
+	}else{
+		fs.writeFile(__dirname + '/test.png', res.body, function (err) {
+			if(err)
+				console.log("error writing file");
+		});
+	}
+});
+
 

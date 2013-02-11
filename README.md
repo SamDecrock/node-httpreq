@@ -28,6 +28,7 @@ __Arguments__
     - parameters: an object of query parameters
     - headers: an object of headers
     - cookies: an array of cookies
+    - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without options__
@@ -80,6 +81,7 @@ __Arguments__
     - parameters: an object of post parameters ( *application/x-www-form-urlencoded* is used)
     - headers: an object of headers
     - cookies: an array of cookies
+    - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without extra options__
@@ -137,6 +139,7 @@ __Arguments__
     - files: an object of files (can be more than one)
     - headers: an object of headers
     - cookies: an array of cookies
+    - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 ```js
@@ -172,6 +175,7 @@ __Arguments__
     - files: an object of files (can be more than one)
     - headers: an object of headers
     - cookies: an array of cookies
+    - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example__
