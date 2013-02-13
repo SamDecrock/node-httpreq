@@ -18,6 +18,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 * [httpreq.uploadFile(options, callback)](#upload)
 * [httpreq.doRequest(options, callback)](#dorequest)
 * [Downloading a binary file](#binary)
+* [Sending a custom body](#custombody)
 
 ---------------------------------------
 <a name="get" />
@@ -30,6 +31,7 @@ __Arguments__
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
+    - body: custom body content you want to send
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without options__
@@ -83,6 +85,7 @@ __Arguments__
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
+    - body: custom body content you want to send. Parameters are ignored when this used.
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example without extra options__
@@ -177,6 +180,7 @@ __Arguments__
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
+    - body: custom body content you want to send
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
 
 __Example__
@@ -208,6 +212,8 @@ To download a binary file, just add __binary: true__ to the options when doing a
 __Example__
 
 ```js
+var httpreq = require('httpreq');
+
 httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true}, function (err, res){
     if (err){
         console.log(err);
@@ -218,6 +224,31 @@ httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true},
         });
     }
 });
+```
+
+---------------------------------------
+<a name="custombody" />
+### Sending a custom body
+Use the body option to send a custom body (eg. an xml post)
+
+__Example__
+
+```js
+var httpreq = require('httpreq');
+
+httpreq.post('http://posttestserver.com/post.php',{
+    body: '<?xml version="1.0" encoding="UTF-8"?>',
+    headers:{
+        'Content-Type': 'text/xml',
+    }},
+    function (err, res) {
+        if (err){
+            console.log(err);
+        }else{
+            console.log(res.body);
+        }
+    }
+);
 ```
 
 

@@ -100,4 +100,19 @@ httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true},
 	}
 });
 
+// send your own body content (eg. xml):
+httpreq.post('http://posttestserver.com/post.php',{
+	body: '<?xml version="1.0" encoding="UTF-8"?>',
+	headers:{
+		'Content-Type': 'text/xml',
+	}},
+	function (err, res) {
+		if (err){
+			console.log(err);
+		}else{
+			console.log(res.body);
+		}
+	}
+);
+
 

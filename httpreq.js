@@ -51,7 +51,7 @@ exports.post = function(url, options, callback){
 
 exports.doRequest = function(o, callback){
 	var chunks = [];
-	var params;
+	var body;
 
 	var reqUrl = url.parse(o.url);
 	var path = reqUrl.path;
@@ -67,9 +67,13 @@ exports.doRequest = function(o, callback){
 	}
 
 	if(o.method == 'POST' && o.parameters){
-		params = querystring.stringify(o.parameters);
+		body = querystring.stringify(o.parameters);
 	}else if(o.method == 'GET' && o.parameters){
 		path += "?" + querystring.stringify(o.parameters);
+	}
+
+	if(o.body){
+		body = o.body;
 	}
 
 	var requestoptions = {
@@ -80,9 +84,12 @@ exports.doRequest = function(o, callback){
 		headers: {}
 	};
 
-	if(params){
+	if(o.method == 'POST' && o.parameters){
 		requestoptions['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-		requestoptions['headers']['Content-Length'] = params.length;
+	}
+
+	if(body){
+		requestoptions['headers']['Content-Length'] = body.length;
 	}
 
 	if(o.cookies){
@@ -124,8 +131,8 @@ exports.doRequest = function(o, callback){
 		callback(err);
 	});
 
-	if(params)
-		request.write(params);
+	if(body)
+		request.write(body);
 
 	request.end();
 };
