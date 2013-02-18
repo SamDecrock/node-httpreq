@@ -103,11 +103,14 @@ exports.doRequest = function(o, callback){
 	}
 
 	function requestResponse(res){
+		var ended = false;
+
 		res.on('data', function (chunk) {
 			chunks.push(chunk);
 		});
 
 		res.on('end', function (err) {
+			ended = true;
 			var responsebody = Buffer.concat(chunks);
 			if(!o.binary)
 				responsebody = responsebody.toString('utf8');
@@ -115,8 +118,9 @@ exports.doRequest = function(o, callback){
 			callback(null, {headers: res.headers, body: responsebody});
 		});
 
-		res.on('close', function (err) {
-			callback(err);
+		res.on('close', function () {
+			if(!ended)
+				callback(new Error("Request aborted"));
 		});
 	}
 
@@ -204,11 +208,14 @@ exports.uploadFiles = function(o, callback){
 	}
 
 	function requestResponse(res){
+		var ended = false;
+
 		res.on('data', function (chunk) {
 			chunks.push(chunk);
 		});
 
 		res.on('end', function (err) {
+			ended = true;
 			var responsebody = Buffer.concat(chunks);
 			if(!o.binary)
 				responsebody = responsebody.toString('utf8');
@@ -216,8 +223,9 @@ exports.uploadFiles = function(o, callback){
 			callback(null, {headers: res.headers, body: responsebody});
 		});
 
-		res.on('close', function (err) {
-			callback(err);
+		res.on('close', function () {
+			(!ended)
+				callback(new Error("Request aborted"));
 		});
 	}
 
