@@ -32,6 +32,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send
+    - allowRedirects: (default: __true__ ...only with httpreq.get ), if true, redirects will be followed
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without options__
@@ -86,6 +87,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send. Parameters are ignored when this is used.
+    - allowRedirects: (default: false), if true, redirects will be followed
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without extra options__
@@ -181,6 +183,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send
+    - allowRedirects: (default: false), if true, redirects will be followed
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example__

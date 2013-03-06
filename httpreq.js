@@ -35,7 +35,11 @@ exports.get = function(url, options, callback){
 	var moreOptions = options;
 	moreOptions.url = url;
 	moreOptions.method = 'GET';
-	this.doRequest(moreOptions, callback);
+
+	if(moreOptions.allowRedirects === undefined)
+		moreOptions.allowRedirects = true;
+
+	doRequest(moreOptions, callback);
 }
 
 exports.post = function(url, options, callback){
@@ -46,10 +50,10 @@ exports.post = function(url, options, callback){
 	var moreOptions = options;
 	moreOptions.url = url;
 	moreOptions.method = 'POST';
-	this.doRequest(moreOptions, callback);
+	doRequest(moreOptions, callback);
 }
 
-exports.doRequest = function(o, callback){
+function doRequest(o, callback){
 	var chunks = [];
 	var body;
 
@@ -111,6 +115,13 @@ exports.doRequest = function(o, callback){
 
 		res.on('end', function (err) {
 			ended = true;
+
+			// check for redirects
+			if(res.headers.location && o.allowRedirects){
+				o.url = res.headers.location;
+				return doRequest(o, callback);
+			}
+
 			var responsebody = Buffer.concat(chunks);
 			if(!o.binary)
 				responsebody = responsebody.toString('utf8');
@@ -245,4 +256,4 @@ exports.uploadFiles = function(o, callback){
 	request.end();
 }
 
-
+exports.doRequest = doRequest;
