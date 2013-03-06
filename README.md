@@ -32,7 +32,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without options__
 
@@ -86,7 +86,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send. Parameters are ignored when this is used.
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without extra options__
 
@@ -144,7 +144,7 @@ __Arguments__
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 ```js
 var httpreq = require('httpreq');
@@ -181,7 +181,7 @@ __Arguments__
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - body: custom body content you want to send
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ) and the body ( __res.body__ )
+ - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example__
 

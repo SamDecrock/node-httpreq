@@ -115,7 +115,7 @@ exports.doRequest = function(o, callback){
 			if(!o.binary)
 				responsebody = responsebody.toString('utf8');
 
-			callback(null, {headers: res.headers, body: responsebody});
+			callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
 		});
 
 		res.on('close', function () {
@@ -220,7 +220,7 @@ exports.uploadFiles = function(o, callback){
 			if(!o.binary)
 				responsebody = responsebody.toString('utf8');
 
-			callback(null, {headers: res.headers, body: responsebody});
+			callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
 		});
 
 		res.on('close', function () {
