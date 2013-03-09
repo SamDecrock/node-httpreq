@@ -15,7 +15,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 
 * [httpreq.get(url, [options], callback)](#get)
 * [httpreq.post(url, [options], callback)](#post)
-* [httpreq.uploadFile(options, callback)](#upload)
+* [httpreq.uploadFiles(options, callback)](#upload)
 * [httpreq.doRequest(options, callback)](#dorequest)
 * [Downloading a binary file](#binary)
 * [Sending a custom body](#custombody)
@@ -136,7 +136,7 @@ httpreq.post('http://posttestserver.com/post.php', {
 ```
 ---------------------------------------
 <a name="upload" />
-### httpreq.uploadFile(options, callback)
+### httpreq.uploadFiles(options, callback)
 
 __Arguments__
  - options: The following options can be passed:
