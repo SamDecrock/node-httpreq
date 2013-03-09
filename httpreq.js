@@ -159,10 +159,15 @@ exports.uploadFiles = function(o, callback){
 
 	var reqUrl = url.parse(o.url);
 
-	var port = 80;
-	if(reqUrl.protocol == 'https:')
-		port = 443;
+	var port;
 
+	if(reqUrl.port){
+		port = reqUrl.port;
+	}else if(reqUrl.protocol == 'https:'){
+		port = 443;
+	}else{
+		port = 80;
+	}
 
 	var crlf = "\r\n";
 	var boundary = '---------------------------10102754414578508781458777923';
