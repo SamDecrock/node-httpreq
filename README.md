@@ -151,7 +151,7 @@ __Arguments__
 ```js
 var httpreq = require('httpreq');
 
-httpreq.uploadFile({
+httpreq.uploadFiles({
 	url: "http://rekognition.com/demo/do_upload/",
 	parameters:{
 		name_space	: 'something',
