@@ -39,6 +39,10 @@ exports.get = function(url, options, callback){
 	if(moreOptions.allowRedirects === undefined)
 		moreOptions.allowRedirects = true;
 
+	if(moreOptions.maxRedirects === undefined){
+		moreOptions.maxRedirects = 10;
+	}
+
 	doRequest(moreOptions, callback);
 }
 
@@ -88,6 +92,10 @@ function doRequest(o, callback){
 		headers: {}
 	};
 
+	if(!o.redirectCount){
+		o.redirectCount = 0;
+	}	
+
 	if(o.method == 'POST' && o.parameters){
 		requestoptions['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 	}
@@ -118,8 +126,13 @@ function doRequest(o, callback){
 
 			// check for redirects
 			if(res.headers.location && o.allowRedirects){
-				o.url = res.headers.location;
-				return doRequest(o, callback);
+				if(o.redirectCount < 10){
+					o.redirectCount++;
+					o.url = res.headers.location;
+					return doRequest(o, callback);
+				} else {
+					callback(new Error("Too many redirects"));
+				}
 			}
 
 			var responsebody = Buffer.concat(chunks);
@@ -142,8 +155,19 @@ function doRequest(o, callback){
 	else
 		request = http.request(requestoptions, requestResponse);
 
+	if(o.timeout){
+		request.setTimeout(o.timeout, function(){
+			request.timedOut = true;
+			request.abort();
+		});
+	}
+
 	request.on('error', function (err) {
-		callback(err);
+		if(request.timedOut){
+			callback(new Error("Request timed out"));	
+		} else {
+			callback(err);
+		}
 	});
 
 	if(body)
