@@ -116,3 +116,31 @@ httpreq.post('http://posttestserver.com/post.php',{
 );
 
 
+// set max redirects:
+httpreq.get('http://scobleizer.com/feed/',{
+	headers:{
+		'User-Agent': 'Magnet', //for some reason causes endless redirects on this site... 
+	}},
+	function (err, res) {
+		if (err){
+			console.log(err);
+		}else{
+			console.log(res.body);
+		}
+	}
+);
+
+
+// set timeout 
+httpreq.get('http://www.androidpatterns.com/feed', {timeout: (5 * 1000)},
+	function (err, res) {
+		if (err){
+			console.log(err);
+		}else{
+			console.log(res.body);
+		}
+	}
+);
+
+
+
