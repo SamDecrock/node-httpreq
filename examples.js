@@ -115,11 +115,11 @@ httpreq.post('http://posttestserver.com/post.php',{
 	}
 );
 
-
 // set max redirects:
 httpreq.get('http://scobleizer.com/feed/',{
+	maxRedirects: 2, // default is 10
 	headers:{
-		'User-Agent': 'Magnet', //for some reason causes endless redirects on this site... 
+		'User-Agent': 'Magnet', //for some reason causes endless redirects on this site...
 	}},
 	function (err, res) {
 		if (err){
@@ -130,9 +130,10 @@ httpreq.get('http://scobleizer.com/feed/',{
 	}
 );
 
-
-// set timeout 
-httpreq.get('http://www.androidpatterns.com/feed', {timeout: (5 * 1000)},
+// set timeout
+httpreq.get('http://localhost:3000/',{
+	timeout: (5 * 1000) // timeout in milliseconds
+	},
 	function (err, res) {
 		if (err){
 			console.log(err);
@@ -141,6 +142,5 @@ httpreq.get('http://www.androidpatterns.com/feed', {timeout: (5 * 1000)},
 		}
 	}
 );
-
 
 
