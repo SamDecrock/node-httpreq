@@ -132,7 +132,10 @@ function doRequest(o, callback){
 					o.url = res.headers.location;
 					return doRequest(o, callback);
 				} else {
-					return callback(new Error("Too many redirects (> " + o.maxRedirects + ")"));
+					var err = new Error("Too many redirects (> " + o.maxRedirects + ")");
+					err.code = 'TOOMANYREDIRECTS';
+					err.redirects = o.maxRedirects;
+					return callback(err);
 				}
 			}
 
