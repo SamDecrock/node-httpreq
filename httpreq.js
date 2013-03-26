@@ -94,7 +94,7 @@ function doRequest(o, callback){
 
 	if(!o.redirectCount){
 		o.redirectCount = 0;
-	}	
+	}
 
 	if(o.method == 'POST' && o.parameters){
 		requestoptions['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -126,12 +126,12 @@ function doRequest(o, callback){
 
 			// check for redirects
 			if(res.headers.location && o.allowRedirects){
-				if(o.redirectCount < 10){
+				if(o.redirectCount < o.maxRedirects){
 					o.redirectCount++;
 					o.url = res.headers.location;
 					return doRequest(o, callback);
 				} else {
-					callback(new Error("Too many redirects"));
+					return callback(new Error("Too many redirects (> " + o.maxRedirects + ")"));
 				}
 			}
 
@@ -164,7 +164,7 @@ function doRequest(o, callback){
 
 	request.on('error', function (err) {
 		if(request.timedOut){
-			callback(new Error("Request timed out"));	
+			callback(new Error("Request timed out"));
 		} else {
 			callback(err);
 		}
