@@ -58,6 +58,7 @@ exports.post = function(url, options, callback){
 }
 
 function doRequest(o, callback){
+	var hasTimedout = false;
 	var chunks = [];
 	var body;
 
@@ -156,15 +157,17 @@ function doRequest(o, callback){
 		request = http.request(requestoptions, requestResponse);
 
 	if(o.timeout){
-		request.setTimeout(o.timeout, function(){
-			request.timedOut = true;
+		request.setTimeout(o.timeout, function (k, d){
+			hasTimedout = true;
 			request.abort();
 		});
 	}
 
 	request.on('error', function (err) {
-		if(request.timedOut){
-			callback(new Error("Request timed out"));
+		if(hasTimedout){
+			var err = new Error("request timed out");
+			err.code = 'TIMEOUT';
+			callback(err);
 		} else {
 			callback(err);
 		}
