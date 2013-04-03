@@ -19,6 +19,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 * [httpreq.doRequest(options, callback)](#dorequest)
 * [Downloading a binary file](#binary)
 * [Sending a custom body](#custombody)
+* [Using a http(s) proxy](#proxy)
 
 ---------------------------------------
 <a name="get" />
@@ -35,6 +36,10 @@ __Arguments__
     - allowRedirects: (default: __true__ ...only with httpreq.get ), if true, redirects will be followed
     - maxRedirects: (default: 10). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: none). Adds a timeout to the http(s) request. Should be in milliseconds.
+    - proxy (optional) if you want to pass your request through a http(s) proxy server:
+        - host: the host of the proxy, eg: "192.168.0.1"
+        - port: eg: 8888
+        - protocol: (optional, default: 'http') can be 'http' or 'https'
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without options__
@@ -92,6 +97,10 @@ __Arguments__
     - allowRedirects: (default: false), if true, redirects will be followed
     - maxRedirects: (default: 10). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: none). Adds a timeout to the http(s) request. Should be in milliseconds.
+    - proxy (optional) if you want to pass your request through a http(s) proxy server:
+        - host: the host of the proxy, eg: "192.168.0.1"
+        - port: eg: 8888
+        - protocol: (optional, default: 'http') can be 'http' or 'https'
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without extra options__
@@ -190,6 +199,10 @@ __Arguments__
     - allowRedirects: (default: false), if true, redirects will be followed
     - maxRedirects: (default: 10). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: none). Adds a timeout to the http(s) request. Should be in milliseconds.
+    - proxy (optional) if you want to pass your request through a http(s) proxy server:
+        - host: the host of the proxy, eg: "192.168.0.1"
+        - port: eg: 8888
+        - protocol: (optional, default: 'http') can be 'http' or 'https'
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example__
@@ -258,6 +271,29 @@ httpreq.post('http://posttestserver.com/post.php',{
         }
     }
 );
+```
+
+---------------------------------------
+<a name="proxy" />
+### Using a http(s) proxy
+
+__Example__
+
+```js
+var httpreq = require('httpreq');
+
+httpreq.post('http://posttestserver.com/post.php', {
+    proxy: {
+        host: '10.100.0.126',
+        port: 8888
+    }
+}, function (err, res){
+    if (err){
+        console.log(err);
+    }else{
+        console.log(res.body);
+    }
+});
 ```
 
 

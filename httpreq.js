@@ -62,17 +62,28 @@ function doRequest(o, callback){
 	var chunks = [];
 	var body;
 
-	var reqUrl = url.parse(o.url);
-	var path = reqUrl.path;
-
 	var port;
+	var host;
+	var path;
+	var isHttps = false;
 
-	if(reqUrl.port){
-		port = reqUrl.port;
-	}else if(reqUrl.protocol == 'https:'){
-		port = 443;
+	if(o.proxy){
+		port = o.proxy.port;
+		host = o.proxy.host;
+		path = o.url; // complete url
+		if(o.proxy.protocol && o.proxy.protocol.match(/https/)) isHttps = true;
 	}else{
-		port = 80;
+		var reqUrl = url.parse(o.url);
+		host = reqUrl.hostname;
+		path = reqUrl.path;
+		if(reqUrl.protocol == 'https:') isHttps = true;
+		if(reqUrl.port){
+			port = reqUrl.port;
+		}else if(isHttps){
+			port = 443;
+		}else{
+			port = 80;
+		}
 	}
 
 	if(o.method == 'POST' && o.parameters){
@@ -86,7 +97,7 @@ function doRequest(o, callback){
 	}
 
 	var requestoptions = {
-		host: reqUrl.hostname,
+		host: host,
 		port: port,
 		path: path,
 		method: o.method,
@@ -154,7 +165,7 @@ function doRequest(o, callback){
 
 	var request;
 
-	if(reqUrl.protocol == 'https:')
+	if(isHttps)
 		request = https.request(requestoptions, requestResponse);
 	else
 		request = http.request(requestoptions, requestResponse);
