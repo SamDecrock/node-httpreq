@@ -39,10 +39,6 @@ exports.get = function(url, options, callback){
 	if(moreOptions.allowRedirects === undefined)
 		moreOptions.allowRedirects = true;
 
-	if(moreOptions.maxRedirects === undefined){
-		moreOptions.maxRedirects = 10;
-	}
-
 	doRequest(moreOptions, callback);
 }
 
@@ -58,6 +54,10 @@ exports.post = function(url, options, callback){
 }
 
 function doRequest(o, callback){
+	if(o.maxRedirects === undefined){
+		o.maxRedirects = 10;
+	}
+
 	var hasTimedout = false;
 	var chunks = [];
 	var body;
@@ -92,6 +92,10 @@ function doRequest(o, callback){
 		path += "?" + querystring.stringify(o.parameters);
 	}
 
+	if(o.json){
+		body = JSON.stringify(o.json);
+	}
+
 	if(o.body){
 		body = o.body;
 	}
@@ -110,6 +114,10 @@ function doRequest(o, callback){
 
 	if(o.method == 'POST' && o.parameters){
 		requestoptions['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	}
+
+	if(o.json){
+		requestoptions['headers']['Content-Type'] = 'application/json';
 	}
 
 	if(body){
