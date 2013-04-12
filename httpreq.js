@@ -121,7 +121,7 @@ function doRequest(o, callback){
 	}
 
 	if(body){
-		requestoptions['headers']['Content-Length'] = body.length;
+		requestoptions['headers']['Content-Length'] = (new Buffer(body, 'utf8')).length;
 	}
 
 	if(o.cookies){
@@ -196,7 +196,7 @@ function doRequest(o, callback){
 	});
 
 	if(body)
-		request.write(body);
+		request.write(body, 'utf8');
 
 	request.end();
 };
