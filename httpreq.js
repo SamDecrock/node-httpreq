@@ -53,6 +53,28 @@ exports.post = function(url, options, callback){
 	doRequest(moreOptions, callback);
 }
 
+exports.put = function(url, options, callback){
+	// if only 2 args are provided
+	if(callback === undefined && options && typeof(options)==="function")
+		callback = options;
+
+	var moreOptions = options;
+	moreOptions.url = url;
+	moreOptions.method = 'PUT';
+	doRequest(moreOptions, callback);
+}
+
+exports.delete = function(url, options, callback){
+	// if only 2 args are provided
+	if(callback === undefined && options && typeof(options)==="function")
+		callback = options;
+
+	var moreOptions = options;
+	moreOptions.url = url;
+	moreOptions.method = 'DELETE';
+	doRequest(moreOptions, callback);
+}
+
 function doRequest(o, callback){
 	if(o.maxRedirects === undefined){
 		o.maxRedirects = 10;
