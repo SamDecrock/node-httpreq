@@ -156,6 +156,10 @@ function doRequest(o, callback){
 		}
 	}
 
+	if(o.agent){
+		requestoptions.agent = o.agent;
+	}
+
 	function requestResponse(res){
 		var ended = false;
 
