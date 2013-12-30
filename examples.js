@@ -8,8 +8,8 @@ fs = require('fs')
 // example4(); // https also works:
 // example5(); // uploading some file:
 // example6(); // u can use doRequest instead of .get or .post
-// example7(); // download a binary file:
-example8(); //send json
+example7(); // download a binary file:
+// example8(); // send json
 // example9(); // send your own body content (eg. xml):
 // example10(); // set max redirects:
 // example11(); // set timeout
@@ -113,7 +113,13 @@ function example6(){
 
 // download a binary file:
 function example7(){
-	httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true}, function (err, res){
+	httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {
+		binary: true,
+		progressCallback: function (err, progress) {
+			console.log(progress);
+		}
+	},
+	function (err, res){
 		if (err){
 			console.log(err);
 		}else{

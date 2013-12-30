@@ -162,9 +162,26 @@ function doRequest(o, callback){
 
 	function requestResponse(res){
 		var ended = false;
+		var currentsize = 0;
 
 		res.on('data', function (chunk) {
 			chunks.push(chunk);
+
+			if(o.progressCallback){
+				var totalsize = res.headers['content-length'];
+				if(totalsize){
+					currentsize += chunk.length;
+
+					o.progressCallback(null, {
+						totalsize: totalsize,
+						currentsize: currentsize,
+						percentage: currentsize*100/totalsize
+					});
+				}else{
+					o.progressCallback(new Error("no content-length specified for file, so no progress monitoring possible"));
+				}
+
+			}
 		});
 
 		res.on('end', function (err) {
