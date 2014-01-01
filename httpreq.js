@@ -26,6 +26,7 @@ var querystring = require('querystring');
 var https = require('https');
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
 
 exports.get = function(url, options, callback){
 	// if only 2 args are provided
