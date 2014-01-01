@@ -17,6 +17,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 * [httpreq.post(url, [options], callback)](#post)
 * [httpreq.uploadFiles(options, callback)](#upload)
 * [Downloading a binary file](#binary)
+* [Downloading a file directly to disk](#download)
 * [Sending a custom body](#custombody)
 * [Using a http(s) proxy](#proxy)
 * [httpreq.doRequest(options, callback)](#dorequest)
@@ -204,6 +205,28 @@ httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true},
 });
 ```
 
+---------------------------------------
+<a name="download" />
+### Downloading a file directly to disk
+To download a file directly to disk, use the download methode provided.
+
+__Example__
+
+```js
+var httpreq = require('httpreq');
+
+httpreq.download(
+    'https://ssl.gstatic.com/gb/images/k1_a31af7ac.png',
+    __dirname + '/test.png'
+, function (err, progress){
+    if (err) return console.log(err);
+    console.log(progress);
+}, function (err, res){
+    if (err) return console.log(err);
+    console.log(res);
+});
+
+```
 ---------------------------------------
 <a name="custombody" />
 ### Sending a custom body

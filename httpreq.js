@@ -75,6 +75,24 @@ exports.delete = function(url, options, callback){
 	doRequest(moreOptions, callback);
 }
 
+exports.download = function (url, downloadlocation, progressCallback, callback) {
+
+
+	var options = {};
+	options.url = url;
+	options.method = 'GET';
+	options.downloadlocation = downloadlocation;
+	options.allowRedirects = true;
+
+	// if only 3 args are provided, so no progressCallback
+	if(callback === undefined && progressCallback && typeof(progressCallback)==="function")
+		callback = progressCallback;
+	else
+		options.progressCallback = progressCallback;
+
+	doRequest(options, callback);
+}
+
 function doRequest(o, callback){
 	if(o.maxRedirects === undefined){
 		o.maxRedirects = 10;
@@ -164,8 +182,15 @@ function doRequest(o, callback){
 		var ended = false;
 		var currentsize = 0;
 
+		var downloadstream = null;
+		if(o.downloadlocation)
+			downloadstream = fs.createWriteStream(o.downloadlocation);
+
 		res.on('data', function (chunk) {
-			chunks.push(chunk);
+			if(o.downloadlocation)
+				downloadstream.write(chunk); //write it to disk, not to memory
+			else
+				chunks.push(chunk);
 
 			if(o.progressCallback){
 				var totalsize = res.headers['content-length'];
@@ -201,11 +226,16 @@ function doRequest(o, callback){
 				}
 			}
 
-			var responsebody = Buffer.concat(chunks);
-			if(!o.binary)
-				responsebody = responsebody.toString('utf8');
+			if(!o.downloadlocation){
+				var responsebody = Buffer.concat(chunks);
+				if(!o.binary)
+					responsebody = responsebody.toString('utf8');
 
-			callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
+				callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
+			}else{
+				downloadstream.end();
+				callback(null, {headers: res.headers, statusCode: res.statusCode, downloadlocation: o.downloadlocation});
+			}
 		});
 
 		res.on('close', function () {
