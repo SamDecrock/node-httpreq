@@ -11,6 +11,19 @@ You can install __httpreq__ using the Node Package Manager (npm):
 
     npm install httpreq
 
+## Simple example
+```js
+var httpreq = require('httpreq');
+
+httpreq.get('http://www.google.com', function (err, res){
+    if (err) return console.log(err);
+
+    console.log(res.statusCode);
+    console.log(res.headers);
+    console.log(res.body);
+});
+```
+
 ## How to use
 
 * [httpreq.get(url, [options], callback)](#get)
