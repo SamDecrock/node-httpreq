@@ -77,8 +77,6 @@ exports.delete = function(url, options, callback){
 }
 
 exports.download = function (url, downloadlocation, progressCallback, callback) {
-
-
 	var options = {};
 	options.url = url;
 	options.method = 'GET';
@@ -234,8 +232,9 @@ function doRequest(o, callback){
 
 				callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
 			}else{
-				downloadstream.end();
-				callback(null, {headers: res.headers, statusCode: res.statusCode, downloadlocation: o.downloadlocation});
+				downloadstream.end(null, null, function () {
+					callback(null, {headers: res.headers, statusCode: res.statusCode, downloadlocation: o.downloadlocation});
+				});
 			}
 		});
 
