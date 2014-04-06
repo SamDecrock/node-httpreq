@@ -21,6 +21,7 @@ httpreq.get('http://www.google.com', function (err, res){
     console.log(res.statusCode);
     console.log(res.headers);
     console.log(res.body);
+    console.log(res.cookies);
 });
 ```
 

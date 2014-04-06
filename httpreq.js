@@ -93,6 +93,12 @@ exports.download = function (url, downloadlocation, progressCallback, callback) 
 }
 
 function doRequest(o, callback){
+	if(!callback){
+		callback = function (err) {
+			// dummy function
+		}
+	}
+
 	if(o.maxRedirects === undefined){
 		o.maxRedirects = 10;
 	}
@@ -230,10 +236,10 @@ function doRequest(o, callback){
 				if(!o.binary)
 					responsebody = responsebody.toString('utf8');
 
-				callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody});
+				callback(null, {headers: res.headers, statusCode: res.statusCode, body: responsebody, cookies: extractCookies(res.headers)});
 			}else{
 				downloadstream.end(null, null, function () {
-					callback(null, {headers: res.headers, statusCode: res.statusCode, downloadlocation: o.downloadlocation});
+					callback(null, {headers: res.headers, statusCode: res.statusCode, downloadlocation: o.downloadlocation, cookies: extractCookies(res.headers)});
 				});
 			}
 		});
@@ -381,6 +387,20 @@ exports.uploadFiles = function(o, callback){
 	request.write(multipartBody);
 
 	request.end();
+}
+
+function extractCookies (headers) {
+	var rawcookies = headers['set-cookie'];
+
+	if(!rawcookies) return [];
+	if(rawcookies == []) return [];
+
+	var cookies = [];
+	for (var i = 0; i < rawcookies.length; i++) {
+		var rawcookie = rawcookies[i].split(';');
+		if(rawcookie[0]) cookies.push(rawcookie[0]);
+	};
+	return cookies;
 }
 
 exports.doRequest = doRequest;
