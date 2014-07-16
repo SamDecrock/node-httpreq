@@ -288,6 +288,7 @@ exports.uploadFiles = function(o, callback){
 	var reqUrl = url.parse(o.url);
 
 	var port;
+	var method;
 
 	if(reqUrl.port){
 		port = reqUrl.port;
@@ -295,6 +296,12 @@ exports.uploadFiles = function(o, callback){
 		port = 443;
 	}else{
 		port = 80;
+	}
+
+	if(o.method){
+		method = o.method;
+	}else {
+		method = 'POST';
 	}
 
 	var crlf = "\r\n";
@@ -334,7 +341,7 @@ exports.uploadFiles = function(o, callback){
 		host: reqUrl.hostname,
 		port: port,
 		path: reqUrl.path,
-		method: 'POST',
+		method: method,
 		headers: {}
 	};
 
