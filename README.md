@@ -29,7 +29,9 @@ httpreq.get('http://www.google.com', function (err, res){
 
 * [httpreq.get(url, [options], callback)](#get)
 * [httpreq.post(url, [options], callback)](#post)
-* [httpreq.uploadFiles(options, callback)](#upload)
+* [httpreq.put(url, [options], callback)](#put)
+* [httpreq.delete(url, [options], callback)](#delete)
+* [Uploading files](#upload)
 * [Downloading a binary file](#binary)
 * [Downloading a file directly to disk](#download)
 * [Sending a custom body](#custombody)
@@ -47,8 +49,6 @@ __Arguments__
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
-    - json: if you want to send json directly (content-type is set to *application/json* )
-    - body: custom body content you want to send. Json is ignored when this is used.
     - allowRedirects: (default: __true__ , only with httpreq.get() ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: __none__ ). Adds a timeout to the http(s) request. Should be in milliseconds.
@@ -104,12 +104,13 @@ httpreq.get('http://posttestserver.com/post.php', {
 __Arguments__
  - url: The url to connect to. Can be http or https.
  - options: (all are optional) The following options can be passed:
-    - parameters: an object of post parameters ( *application/x-www-form-urlencoded* is used)
+    - parameters: an object of post parameters (content-type is set to *application/x-www-form-urlencoded; charset=UTF-8*)
+    - json: if you want to send json directly (content-type is set to *application/json*)
+    - files: an object of files to upload (content-type is set to *multipart/form-data; boundary=xxx*)
+    - body: custom body content you want to send. If used, previous options will be ignored and your custom body will be sent. (content-type will not be set)
     - headers: an object of headers
     - cookies: an array of cookies
     - binary: true/false (default: __false__ ), if true, res.body will be a buffer containing the binary data
-    - json: if you want to send json directly (content-type is set to *application/json* )
-    - body: custom body content you want to send. Parameters or json is ignored when this is used.
     - allowRedirects: (default: __false__ ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: none). Adds a timeout to the http(s) request. Should be in milliseconds.
@@ -163,37 +164,41 @@ httpreq.post('http://posttestserver.com/post.php', {
 	}
 });
 ```
+
+---------------------------------------
+<a name="put" />
+### httpreq.put(url, [options], callback)
+
+Same options as [httpreq.post(url, [options], callback)](#post)
+
+---------------------------------------
+<a name="delete" />
+### httpreq.delete(url, [options], callback)
+
+Same options as [httpreq.post(url, [options], callback)](#post)
+
 ---------------------------------------
 <a name="upload" />
-### httpreq.uploadFiles(options, callback)
+### Uploading files
 
-__Arguments__
- - options: The following options can be passed:
-    - url: the url to post the files to
-    - parameters: an object of post parameters ( *multipart/form-data* is used)
-    - files: an object of files (can be more than one)
-    - headers: an object of headers
-    - cookies: an array of cookies
-    - binary: true/false (default: __false__ ), if true, res.body will be a buffer containing the binary data
- - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
+You can still use ```httpreq.uploadFiles({url: 'url', files: {}}, callback)```, but it's easier to just use POST (or PUT):
+
+__Example__
 
 ```js
 var httpreq = require('httpreq');
 
-httpreq.uploadFiles({
-	url: "http://rekognition.com/demo/do_upload/",
-	parameters:{
-		name_space	: 'something',
-	},
-	files:{
-		fileToUpload: __dirname + "/exampleupload.jpg"
-	}},
-function (err, res){
-	if (err){
-		console.log(err);
-	}else{
-		console.log(res.body);
-	}
+httpreq.post('http://posttestserver.com/upload.php', {
+    parameters: {
+        name: 'John',
+        lastname: 'Doe'
+    },
+    files:{
+        myfile: __dirname + "/testupload.jpg",
+        myotherfile: __dirname + "/testupload.jpg"
+    }
+}, function (err, res){
+    if (err) throw err;
 });
 ```
 
@@ -295,27 +300,6 @@ httpreq.post('http://posttestserver.com/post.php', {
 
 httpreq.doRequest is internally used by httpreq.get() and httpreq.post(). You can use this directly. Everything is stays the same as httpreq.get() or httpreq.post() except that the following options MUST be passed:
 - url: the url to post the files to
-- method: 'GET' or 'POST'
+- method: 'GET', 'POST', 'PUT' or 'DELETE'
 
-## License (MIT)
-
-Copyright (c) Sam Decrock <https://github.com/SamDecrock/>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
