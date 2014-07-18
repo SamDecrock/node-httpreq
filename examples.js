@@ -1,4 +1,4 @@
-var httpreq = require('./httpreq');
+var httpreq = require('./lib/httpreq');
 fs = require('fs')
 
 
