@@ -56,6 +56,7 @@ __Arguments__
         - host: eg: "192.168.0.1"
         - port: eg: 8888
         - protocol: (default: __'http'__ ) can be 'http' or 'https'
+     - rejectUnauthorized: validate certificate for request with HTTPS. [More here](http://nodejs.org/api/https.html#https_https_request_options_callback)
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without options__
@@ -118,7 +119,7 @@ __Arguments__
         - host: eg: "192.168.0.1"
         - port: eg: 8888
         - protocol: (default: __'http'__ ) can be 'http' or 'https'
-    - rejectUnauthorized: (default: __true__), validate certificate for request with HTTPS
+    - rejectUnauthorized: validate certificate for request with HTTPS. [More here](http://nodejs.org/api/https.html#https_https_request_options_callback)
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without extra options__
