@@ -48,6 +48,7 @@ __Arguments__
     - parameters: an object of query parameters
     - headers: an object of headers
     - cookies: an array of cookies
+    - auth: a string for basic authentication. For example `username:password`
     - binary: true/false (default: false), if true, res.body will a buffer containing the binary data
     - allowRedirects: (default: __true__ , only with httpreq.get() ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
@@ -111,6 +112,7 @@ __Arguments__
     - body: custom body content you want to send. If used, previous options will be ignored and your custom body will be sent. (content-type will not be set)
     - headers: an object of headers
     - cookies: an array of cookies
+    - auth: a string for basic authentication. For example `username:password`
     - binary: true/false (default: __false__ ), if true, res.body will be a buffer containing the binary data
     - allowRedirects: (default: __false__ ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
