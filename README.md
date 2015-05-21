@@ -233,7 +233,7 @@ httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true},
 ### Downloading a file directly to disk
 To download a file directly to disk, use the download method provided.
 
-Downloading is done using a stream, so the data is not stored in memory and directory saved to file.
+Downloading is done using a stream, so the data is not stored in memory and directly saved to file.
 
 __Example__
 
