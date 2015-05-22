@@ -1,7 +1,7 @@
 {
   "name": "httpreq",
   "description": "node-httpreq is a node.js library to do HTTP(S) requests the easy way",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "author": {
     "name": "Sam Decrock",
     "url": "https://github.com/SamDecrock/"
@@ -30,15 +30,6 @@
   },
   "contributors": [
     {
-      "name": "Russell Beattie",
-      "email": "russ@russellbeattie.com",
-      "url": "https://github.com/russellbeattie",
-      "contributions": 1,
-      "additions": 55,
-      "deletions": 3,
-      "hireable": false
-    },
-    {
       "name": "MJJ",
       "email": "",
       "url": "https://github.com/mjj2000",
@@ -48,20 +39,29 @@
       "hireable": true
     },
     {
+      "name": "Russell Beattie",
+      "email": "russ@russellbeattie.com",
+      "url": "https://github.com/russellbeattie",
+      "contributions": 1,
+      "additions": 55,
+      "deletions": 3,
+      "hireable": false
+    },
+    {
       "name": "Sam",
       "email": null,
       "url": "https://github.com/SamDecrock",
-      "contributions": 54,
-      "additions": 2159,
-      "deletions": 957,
+      "contributions": 57,
+      "additions": 2217,
+      "deletions": 963,
       "hireable": true
     },
     {
       "name": "Franklin van de Meent",
       "email": "fr@nkl.in",
       "url": "https://github.com/fvdm",
-      "contributions": 3,
-      "additions": 27,
+      "contributions": 5,
+      "additions": 43,
       "deletions": 14,
       "hireable": false
     }
