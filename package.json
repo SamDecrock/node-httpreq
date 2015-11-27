@@ -1,7 +1,7 @@
 {
   "name": "httpreq",
   "description": "node-httpreq is a node.js library to do HTTP(S) requests the easy way",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "author": {
     "name": "Sam Decrock",
     "url": "https://github.com/SamDecrock/"
@@ -30,22 +30,22 @@
   },
   "contributors": [
     {
-      "name": "Franklin van de Meent",
-      "email": "fr@nkl.in",
-      "url": "https://github.com/fvdm",
-      "contributions": 6,
-      "additions": 44,
-      "deletions": 15,
-      "hireable": false
-    },
-    {
       "name": "Sam",
       "email": null,
       "url": "https://github.com/SamDecrock",
-      "contributions": 58,
-      "additions": 2241,
-      "deletions": 987,
+      "contributions": 60,
+      "additions": 2275,
+      "deletions": 1021,
       "hireable": true
+    },
+    {
+      "name": "Dave Preston",
+      "email": null,
+      "url": "https://github.com/davepreston",
+      "contributions": 1,
+      "additions": 5,
+      "deletions": 0,
+      "hireable": null
     },
     {
       "name": "Russell Beattie",
@@ -54,15 +54,24 @@
       "contributions": 1,
       "additions": 55,
       "deletions": 3,
-      "hireable": false
+      "hireable": null
     },
     {
       "name": "MJJ",
-      "email": "",
+      "email": null,
       "url": "https://github.com/mjj2000",
       "contributions": 1,
       "additions": 11,
       "deletions": 1,
+      "hireable": true
+    },
+    {
+      "name": "Franklin van de Meent",
+      "email": "fr@nkl.in",
+      "url": "https://github.com/fvdm",
+      "contributions": 6,
+      "additions": 44,
+      "deletions": 15,
       "hireable": true
     }
   ]
