@@ -58,6 +58,7 @@ __Arguments__
         - port: eg: 8888
         - protocol: (default: __'http'__ ) can be 'http' or 'https'
      - rejectUnauthorized: validate certificate for request with HTTPS. [More here](http://nodejs.org/api/https.html#https_https_request_options_callback)
+     - ca: An authority certificate or array of authority certificates to check the remote host against. [More here](http://nodejs.org/api/https.html#https_https_request_options_callback)
  - callback(err, res): A callback function which is called when the request is complete. __res__ contains the headers ( __res.headers__ ), the http status code ( __res.statusCode__ ) and the body ( __res.body__ )
 
 __Example without options__
