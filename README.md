@@ -3,7 +3,7 @@ node-httpreq
 
 node-httpreq is a node.js library to do HTTP(S) requests the easy way
 
-Do GET, POST, PUT, DELETE, upload files, use cookies, change headers, ...
+Do GET, POST, PUT, DELETE, OPTIONS, upload files, use cookies, change headers, ...
 
 ## Install
 
@@ -31,6 +31,7 @@ httpreq.get('http://www.google.com', function (err, res){
 * [httpreq.post(url, [options], callback)](#post)
 * [httpreq.put(url, [options], callback)](#put)
 * [httpreq.delete(url, [options], callback)](#delete)
+* [httpreq.options(url, [options], callback)](#options)
 * [Uploading files](#upload)
 * [Downloading a binary file](#binary)
 * [Downloading a file directly to disk](#download)
@@ -180,6 +181,12 @@ Same options as [httpreq.post(url, [options], callback)](#post)
 ### httpreq.delete(url, [options], callback)
 
 Same options as [httpreq.post(url, [options], callback)](#post)
+
+---------------------------------------
+<a name="options" />
+### httpreq.options(url, [options], callback)
+
+Same options as [httpreq.get(url, [options], callback)](#get) except for the ability to follow redirects.
 
 ---------------------------------------
 <a name="upload" />
