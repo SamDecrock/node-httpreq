@@ -86,7 +86,7 @@ function example5(){
 			name_space	: 'something',
 		},
 		files:{
-			fileToUpload: __dirname + "/exampleupload.jpg"
+			fileToUpload: __dirname + "/test/testupload.jpg"
 		}},
 	function (err, res){
 		if (err) return console.log(err);

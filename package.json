@@ -1,7 +1,7 @@
 {
   "name": "httpreq",
   "description": "node-httpreq is a node.js library to do HTTP(S) requests the easy way",
-  "version": "0.4.16",
+  "version": "0.4.20",
   "author": {
     "name": "Sam Decrock",
     "url": "https://github.com/SamDecrock/"
@@ -30,24 +30,6 @@
   },
   "contributors": [
     {
-      "name": "Sam",
-      "email": null,
-      "url": "https://github.com/SamDecrock",
-      "contributions": 60,
-      "additions": 2275,
-      "deletions": 1021,
-      "hireable": true
-    },
-    {
-      "name": "Dave Preston",
-      "email": null,
-      "url": "https://github.com/davepreston",
-      "contributions": 1,
-      "additions": 5,
-      "deletions": 0,
-      "hireable": null
-    },
-    {
       "name": "Russell Beattie",
       "email": "russ@russellbeattie.com",
       "url": "https://github.com/russellbeattie",
@@ -55,6 +37,33 @@
       "additions": 55,
       "deletions": 3,
       "hireable": null
+    },
+    {
+      "name": "Jason Prickett MSFT",
+      "email": null,
+      "url": "https://github.com/jpricketMSFT",
+      "contributions": 1,
+      "additions": 5,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": null,
+      "email": null,
+      "url": "https://github.com/jjharriso",
+      "contributions": 1,
+      "additions": 12,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
+      "name": "Sam",
+      "email": null,
+      "url": "https://github.com/SamDecrock",
+      "contributions": 63,
+      "additions": 2309,
+      "deletions": 1040,
+      "hireable": true
     },
     {
       "name": "MJJ",
@@ -66,13 +75,31 @@
       "hireable": true
     },
     {
+      "name": "Jeff Young",
+      "email": null,
+      "url": "https://github.com/jeffyoung",
+      "contributions": 1,
+      "additions": 19,
+      "deletions": 1,
+      "hireable": null
+    },
+    {
+      "name": "Dave Preston",
+      "email": null,
+      "url": "https://github.com/davepreston",
+      "contributions": 1,
+      "additions": 5,
+      "deletions": 0,
+      "hireable": null
+    },
+    {
       "name": "Franklin van de Meent",
       "email": "fr@nkl.in",
       "url": "https://github.com/fvdm",
-      "contributions": 6,
-      "additions": 44,
-      "deletions": 15,
-      "hireable": true
+      "contributions": 8,
+      "additions": 51,
+      "deletions": 16,
+      "hireable": null
     }
   ]
 }
