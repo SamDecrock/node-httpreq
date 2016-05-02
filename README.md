@@ -116,6 +116,7 @@ __Arguments__
     - binary: true/false (default: __false__ ), if true, res.body will be a buffer containing the binary data
     - allowRedirects: (default: __false__ ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
+    - encodePostParameters: (default: __true__ ), if true, POST/PUT parameters names will be URL encoded.
     - timeout: (default: none). Adds a timeout to the http(s) request. Should be in milliseconds.
     - proxy, if you want to pass your request through a http(s) proxy server:
         - host: eg: "192.168.0.1"
