@@ -16,12 +16,12 @@ You can install __httpreq__ using the Node Package Manager (npm):
 var httpreq = require('httpreq');
 
 httpreq.get('http://www.google.com', function (err, res){
-    if (err) return console.log(err);
+  if (err) return console.log(err);
 
-    console.log(res.statusCode);
-    console.log(res.headers);
-    console.log(res.body);
-    console.log(res.cookies);
+  console.log(res.statusCode);
+  console.log(res.headers);
+  console.log(res.body);
+  console.log(res.cookies);
 });
 ```
 
@@ -67,11 +67,11 @@ __Example without options__
 var httpreq = require('httpreq');
 
 httpreq.get('http://www.google.com', function (err, res){
-	if (err) return console.log(err);
+  if (err) return console.log(err);
 
-    console.log(res.statusCode);
-    console.log(res.headers);
-	console.log(res.body);
+  console.log(res.statusCode);
+  console.log(res.headers);
+  console.log(res.body);
 });
 ```
 
@@ -81,23 +81,23 @@ __Example with options__
 var httpreq = require('httpreq');
 
 httpreq.get('http://posttestserver.com/post.php', {
-	parameters: {
-		name: 'John',
-		lastname: 'Doe'
-	},
-	headers:{
-		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
-	},
-	cookies: [
-		'token=DGcGUmplWQSjfqEvmu%2BZA%2Fc',
-		'id=2'
-	]
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  },
+  headers:{
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
+  },
+  cookies: [
+    'token=DGcGUmplWQSjfqEvmu%2BZA%2Fc',
+    'id=2'
+  ]
 }, function (err, res){
-	if (err){
-		console.log(err);
-	}else{
-		console.log(res.body);
-	}
+  if (err){
+    console.log(err);
+  }else{
+    console.log(res.body);
+  }
 });
 ```
 ---------------------------------------
@@ -132,16 +132,16 @@ __Example without extra options__
 var httpreq = require('httpreq');
 
 httpreq.post('http://posttestserver.com/post.php', {
-	parameters: {
-		name: 'John',
-		lastname: 'Doe'
-	}
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  }
 }, function (err, res){
-	if (err){
-		console.log(err);
-	}else{
-		console.log(res.body);
-	}
+  if (err){
+    console.log(err);
+  }else{
+    console.log(res.body);
+  }
 });
 ```
 
@@ -151,23 +151,23 @@ __Example with options__
 var httpreq = require('httpreq');
 
 httpreq.post('http://posttestserver.com/post.php', {
-	parameters: {
-		name: 'John',
-		lastname: 'Doe'
-	},
-	headers:{
-		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
-	},
-	cookies: [
-		'token=DGcGUmplWQSjfqEvmu%2BZA%2Fc',
-		'id=2'
-	]
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  },
+  headers:{
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
+  },
+  cookies: [
+    'token=DGcGUmplWQSjfqEvmu%2BZA%2Fc',
+    'id=2'
+  ]
 }, function (err, res){
-	if (err){
-		console.log(err);
-	}else{
-		console.log(res.body);
-	}
+  if (err){
+    console.log(err);
+  }else{
+    console.log(res.body);
+  }
 });
 ```
 
@@ -201,16 +201,16 @@ __Example__
 var httpreq = require('httpreq');
 
 httpreq.post('http://posttestserver.com/upload.php', {
-    parameters: {
-        name: 'John',
-        lastname: 'Doe'
-    },
-    files:{
-        myfile: __dirname + "/testupload.jpg",
-        myotherfile: __dirname + "/testupload.jpg"
-    }
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  },
+  files:{
+    myfile: __dirname + "/testupload.jpg",
+    myotherfile: __dirname + "/testupload.jpg"
+  }
 }, function (err, res){
-    if (err) throw err;
+  if (err) throw err;
 });
 ```
 
@@ -225,14 +225,14 @@ __Example__
 var httpreq = require('httpreq');
 
 httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true}, function (err, res){
-    if (err){
-        console.log(err);
-    }else{
-        fs.writeFile(__dirname + '/test.png', res.body, function (err) {
-            if(err)
-                console.log("error writing file");
-        });
-    }
+  if (err){
+    console.log(err);
+  }else{
+    fs.writeFile(__dirname + '/test.png', res.body, function (err) {
+      if(err)
+        console.log("error writing file");
+    });
+  }
 });
 ```
 
@@ -249,14 +249,14 @@ __Example__
 var httpreq = require('httpreq');
 
 httpreq.download(
-    'https://ssl.gstatic.com/gb/images/k1_a31af7ac.png',
-    __dirname + '/test.png'
+  'https://ssl.gstatic.com/gb/images/k1_a31af7ac.png',
+  __dirname + '/test.png'
 , function (err, progress){
-    if (err) return console.log(err);
-    console.log(progress);
+  if (err) return console.log(err);
+  console.log(progress);
 }, function (err, res){
-    if (err) return console.log(err);
-    console.log(res);
+  if (err) return console.log(err);
+  console.log(res);
 });
 
 ```
@@ -271,17 +271,17 @@ __Example__
 var httpreq = require('httpreq');
 
 httpreq.post('http://posttestserver.com/post.php',{
-    body: '<?xml version="1.0" encoding="UTF-8"?>',
-    headers:{
-        'Content-Type': 'text/xml',
-    }},
-    function (err, res) {
-        if (err){
-            console.log(err);
-        }else{
-            console.log(res.body);
-        }
+  body: '<?xml version="1.0" encoding="UTF-8"?>',
+  headers:{
+    'Content-Type': 'text/xml',
+  }},
+  function (err, res) {
+    if (err){
+      console.log(err);
+    }else{
+      console.log(res.body);
     }
+  }
 );
 ```
 
@@ -295,16 +295,16 @@ __Example__
 var httpreq = require('httpreq');
 
 httpreq.post('http://posttestserver.com/post.php', {
-    proxy: {
-        host: '10.100.0.126',
-        port: 8888
-    }
+  proxy: {
+    host: '10.100.0.126',
+    port: 8888
+  }
 }, function (err, res){
-    if (err){
-        console.log(err);
-    }else{
-        console.log(res.body);
-    }
+  if (err){
+    console.log(err);
+  }else{
+    console.log(res.body);
+  }
 });
 ```
 
