@@ -40,8 +40,8 @@ httpreq.get('http://www.google.com', function (err, res){
 * [httpreq.doRequest(options, callback)](#dorequest)
 
 ---------------------------------------
-<a name="get" />
 ### httpreq.get(url, [options], callback)
+<a name="get"></a>
 
 __Arguments__
  - url: The url to connect to. Can be http or https.
@@ -101,8 +101,8 @@ httpreq.get('http://posttestserver.com/post.php', {
 });
 ```
 ---------------------------------------
-<a name="post" />
 ### httpreq.post(url, [options], callback)
+<a name="post"></a>
 
 __Arguments__
  - url: The url to connect to. Can be http or https.
@@ -172,8 +172,8 @@ httpreq.post('http://posttestserver.com/post.php', {
 ```
 
 ---------------------------------------
-<a name="put" />
 ### httpreq.put(url, [options], callback)
+<a name="put"></a>
 
 Same options as [httpreq.post(url, [options], callback)](#post)
 
@@ -215,7 +215,7 @@ httpreq.post('http://posttestserver.com/upload.php', {
 ```
 
 ---------------------------------------
-<a name="binary" />
+<a name="binary"></a>
 ### Downloading a binary file
 To download a binary file, just add __binary: true__ to the options when doing a get or a post.
 
@@ -237,7 +237,7 @@ httpreq.get('https://ssl.gstatic.com/gb/images/k1_a31af7ac.png', {binary: true},
 ```
 
 ---------------------------------------
-<a name="download" />
+<a name="download"></a>
 ### Downloading a file directly to disk
 To download a file directly to disk, use the download method provided.
 
@@ -261,7 +261,7 @@ httpreq.download(
 
 ```
 ---------------------------------------
-<a name="custombody" />
+<a name="custombody"></a>
 ### Sending a custom body
 Use the body option to send a custom body (eg. an xml post)
 
@@ -286,7 +286,7 @@ httpreq.post('http://posttestserver.com/post.php',{
 ```
 
 ---------------------------------------
-<a name="proxy" />
+<a name="proxy"></a>
 ### Using a http(s) proxy
 
 __Example__
@@ -309,8 +309,8 @@ httpreq.post('http://posttestserver.com/post.php', {
 ```
 
 ---------------------------------------
-<a name="dorequest" />
 ### httpreq.doRequest(options, callback)
+<a name="dorequest"></a>
 
 httpreq.doRequest is internally used by httpreq.get() and httpreq.post(). You can use this directly. Everything is stays the same as httpreq.get() or httpreq.post() except that the following options MUST be passed:
 - url: the url to post the files to
