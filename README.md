@@ -316,4 +316,10 @@ httpreq.doRequest is internally used by httpreq.get() and httpreq.post(). You ca
 - url: the url to post the files to
 - method: 'GET', 'POST', 'PUT' or 'DELETE'
 
+## Donate
+
+If you like this module or you want me to update it faster, feel free to donate. It helps increasing my dedication to fixing bugs :-)
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AB3R2SUL53K7S)
+
 
