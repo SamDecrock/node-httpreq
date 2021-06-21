@@ -5,6 +5,10 @@ node-httpreq is a node.js library to do HTTP(S) requests the easy way
 
 Do GET, POST, PUT, PATCH, DELETE, OPTIONS, upload files, use cookies, change headers, ...
 
+## Donate
+
+Feel free [to buy me a pizza 🍕](https://www.buymeacoffee.com/samdecrock)
+
 ## Install
 
 You can install __httpreq__ using the Node Package Manager (npm):
@@ -316,10 +320,24 @@ httpreq.doRequest is internally used by httpreq.get() and httpreq.post(). You ca
 - url: the url to post the files to
 - method: 'GET', 'POST', 'PUT' or 'DELETE'
 
-## Donate
+## Run tests
 
-If you like this module or you want me to update it faster, feel free to donate. It helps increasing my dedication to fixing bugs :-)
+Install all depedencies with
 
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AB3R2SUL53K7S)
+```bash
+npm install
+```
+
+Install mocha with
+
+```bash
+npm install mocha -g
+```
+
+Run tests:
+```bash
+mocha test/tests.js
+```
+
 
 
