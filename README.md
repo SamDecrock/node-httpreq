@@ -19,7 +19,7 @@ You can install __httpreq__ using the Node Package Manager (npm):
 ```js
 var httpreq = require('httpreq');
 
-httpreq.get('http://www.google.com', function (err, res){
+httpreq.get('http://www.google.com', function (err, res) {
   if (err) return console.log(err);
 
   console.log(res.statusCode);
@@ -27,6 +27,40 @@ httpreq.get('http://www.google.com', function (err, res){
   console.log(res.body);
   console.log(res.cookies);
 });
+```
+
+__Using await/async:__
+
+```js
+var httpreq = require('httpreq');
+
+var res = await httpreq.get('http://www.google.com');
+
+console.log(res.statusCode);
+console.log(res.headers);
+console.log(res.body);
+console.log(res.cookies);
+```
+
+## Use with async/await
+
+This module has been updated to support async/await.
+
+In the following examples, simply omit the `callback` parameter and prepend it with `await`.
+
+__Example:__
+
+```js
+var httpreq = require('httpreq');
+
+var res = await httpreq.post('http://posttestserver.com/post.php', {
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  }
+});
+
+console.log(res.body);
 ```
 
 ## How to use
@@ -264,6 +298,9 @@ httpreq.download(
 });
 
 ```
+
+When specifying the `progress` callback (3th parameter), you cannot use async/await.
+
 ---------------------------------------
 <a name="custombody"></a>
 ### Sending a custom body
@@ -339,5 +376,8 @@ Run tests:
 mocha test/tests.js
 ```
 
-
+Run the async/await tests:
+```bash
+mocha test/tests-async.js
+```
 
