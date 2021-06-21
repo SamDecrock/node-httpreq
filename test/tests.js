@@ -61,6 +61,29 @@ describe("httpreq", function(){
 
   });
 
+
+  describe("head", function(){
+
+    it("should do a simple HEAD request", function (done){
+
+      var path = '/head';
+      var headerValue = 'abcd';
+
+      app.head(path, function (req, res) {
+        res.set('x-user', headerValue);
+        res.sendStatus(200);
+      });
+
+      httpreq.head(endpointroot + path, function (err, res) {
+        if (err) throw err;
+        expect(res.headers['x-user']).to.deep.equal(headerValue);
+        done();
+      });
+
+    });
+
+  });
+
   describe("post", function(){
 
     it("should do a simple POST request with parameters", function (done){
