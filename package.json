@@ -1,7 +1,7 @@
 {
   "name": "httpreq",
   "description": "node-httpreq is a node.js library to do HTTP(S) requests the easy way",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": {
     "name": "Sam Decrock",
     "url": "https://github.com/SamDecrock/"
@@ -10,7 +10,7 @@
     "url": "https://github.com/SamDecrock/node-httpreq/issues"
   },
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 6.15.1"
   },
   "repository": {
     "type": "git",
