@@ -243,9 +243,29 @@ httpreq.post('http://posttestserver.com/upload.php', {
     name: 'John',
     lastname: 'Doe'
   },
-  files:{
-    myfile: __dirname + "/testupload.jpg",
-    myotherfile: __dirname + "/testupload.jpg"
+  files: {
+    myfile: __dirname + '/file1.jpg',
+    myotherfile: __dirname + '/file2.jpg'
+  }
+}, function (err, res){
+  if (err) throw err;
+});
+```
+
+__Example 2__
+
+In case you want to use the same form name for multiple files:
+
+```js
+var httpreq = require('httpreq');
+
+httpreq.post('http://posttestserver.com/upload.php', {
+  parameters: {
+    name: 'John',
+    lastname: 'Doe'
+  },
+  files: {
+    myfiles: [__dirname + '/file1.jpg', __dirname + '/file.jpg']
   }
 }, function (err, res){
   if (err) throw err;

@@ -366,7 +366,7 @@ describe("httpreq", function(){
       });
     });
 
-    it('should upload 2 files (new way, using POST)', function (done) {
+    it('should upload 2 files (using POST)', function (done) {
 
       var testparams = {
         name: 'John',
@@ -401,7 +401,41 @@ describe("httpreq", function(){
       });
     });
 
-    it('should upload 2 files (new way, using PUT)', function (done) {
+    it('should upload 2 files (as array, using POST)', function (done) {
+
+      var testparams = {
+        name: 'John',
+        lastname: 'Doe'
+      };
+
+      var testfile = __dirname + "/testupload.jpg";
+
+      var path = '/uploadfiles_array';
+
+      // set up webserver endpoint:
+      app.post(path, upload.fields([{name: 'myfiles'}]), function (req, res) {
+        res.send('ok');
+
+        expect(req.body).to.deep.equal(testparams);
+
+        comparefiles(req.files['myfiles'][0].path, testfile, function () {
+          comparefiles(req.files['myfiles'][1].path, testfile, function () {
+            done();
+          });
+        });
+      });
+
+      httpreq.post(endpointroot + path, {
+        parameters: testparams,
+        files:{
+          myfiles: [testfile, testfile]
+        }
+      }, function (err, res){
+        if (err) throw err;
+      });
+    });
+
+    it('should upload 2 files (using PUT)', function (done) {
 
       var testparams = {
         name: 'John',
