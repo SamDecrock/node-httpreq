@@ -54,6 +54,10 @@ describe("httpreq", function(){
       expect(JSON.parse(res.body)).to.deep.equal(jsonData);
     });
 
+    it("should do a HTTPS GET request and shuffle the ciphers", async () => {
+      var res = await httpreq.get('https://www.reichelt.com/be/nl/raspberry-pi-afstandsboutset-30mm-rpi-mountingkit3-p162090.html', {shuffleCiphers: true});
+      expect(res.statusCode).to.deep.equal(200);
+    });
   });
 
   describe("head", () => {

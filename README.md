@@ -5,9 +5,16 @@ node-httpreq is a node.js library to do HTTP(S) requests the easy way
 
 Do GET, POST, PUT, PATCH, DELETE, OPTIONS, upload files, use cookies, change headers, ...
 
+This module helps you fight [TLS fingerprinting](https://httptoolkit.com/blog/tls-fingerprinting-node-js/)! See the `shuffleCiphers` option below.
+
 ## Donate
 
-Feel free [to buy me a pizza 🍕](https://www.buymeacoffee.com/samdecrock)
+If you've benefited from this module in any way, please consider donating!
+
+[![](https://neat.be/paypal-donate-button.png)](https://www.paypal.com/donate/?hosted_button_id=2CKNJLZJBW8ZC)
+
+Thank you for your support!
+
 
 ## Install
 
@@ -92,6 +99,8 @@ __Arguments__
     - allowRedirects: (default: __true__ , only with httpreq.get() ), if true, redirects will be followed
     - maxRedirects: (default: __10__ ). For example 1 redirect will allow for one normal request and 1 extra redirected request.
     - timeout: (default: __none__ ). Adds a timeout to the http(s) request. Should be in milliseconds.
+    - ciphers: Change the TLS ciphers if needed.
+    - shuffleCiphers: Set to `true` if you want to shuffle the TLS ciphers to fight [TLS fingerprinting](https://httptoolkit.com/blog/tls-fingerprinting-node-js/).
     - proxy, if you want to pass your request through a http(s) proxy server:
         - host: eg: "192.168.0.1"
         - port: eg: 8888
